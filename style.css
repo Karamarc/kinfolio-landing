@@ -32,7 +32,7 @@ header.site .wrap { display: flex; align-items: center; justify-content: space-b
 .hero .ar { display: block; margin-top: 10px; font-size: 1.15rem; color: var(--accent-deep); direction: rtl; }
 
 .cta-box { margin: 30px auto 8px; max-width: 480px; }
-.cta-form { display: flex; gap: 8px; }
+.cta-form { display: flex; gap: 8px; flex-wrap: wrap; }
 .cta-form input[type="email"] {
   flex: 1; padding: 14px 16px; font-size: 1rem; border: 1px solid var(--line);
   border-radius: var(--radius); background: var(--card); color: var(--ink); min-width: 0;
