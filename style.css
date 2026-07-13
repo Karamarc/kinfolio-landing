@@ -86,3 +86,4 @@ footer.site a { color: var(--accent-deep); }
 .chip input { position: absolute; opacity: 0; }
 .chip span { display: inline-block; padding: 6px 14px; border: 1px solid var(--line); border-radius: 999px; background: var(--card); font-size: 0.85rem; color: var(--ink-soft); cursor: pointer; }
 .chip input:checked + span { background: var(--accent); border-color: var(--accent); color: #fff; }
+.pain a { color: var(--accent-deep); }
