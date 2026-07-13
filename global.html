@@ -21,7 +21,13 @@
     <form class="cta-form" novalidate>
       <input type="email" required placeholder="Your email">
       <button type="submit">Join the waitlist</button>
-    </form>
+          <div class="who-row" role="radiogroup" aria-label="Who is this for?">
+        <span class="who-label">For:</span>
+        <label class="chip"><input type="radio" name="kf-who" value="myself"><span>Myself</span></label>
+        <label class="chip"><input type="radio" name="kf-who" value="parent"><span>A parent</span></label>
+        <label class="chip"><input type="radio" name="kf-who" value="family-abroad"><span>Family abroad</span></label>
+      </div>
+</form>
     <div class="cta-done">You're on the list — we'll be in touch soon. أهلاً بك</div>
     <p class="cta-note">Founding members get 50% off for life. No spam, ever.</p>
   </div>

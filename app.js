@@ -33,7 +33,7 @@
       fetch(API + "/waitlist", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: email, variant: variant })
+        body: JSON.stringify({ email: email, variant: variant, who: (form.querySelector('input[name="kf-who"]:checked') || {}).value || "" })
       })
         .then(function (r) { if (!r.ok) throw new Error("bad status"); })
         .catch(function () { /* accept optimistically; endpoint logs are source of truth */ })

@@ -80,3 +80,9 @@ footer.site a { color: var(--accent-deep); }
   .trust ul { grid-template-columns: repeat(2, 1fr); }
   .cta-form { flex-direction: column; }
 }
+
+.who-row { display: flex; gap: 8px; align-items: center; justify-content: center; margin-top: 12px; flex-wrap: wrap; width: 100%; }
+.who-label { font-size: 0.85rem; color: var(--ink-soft); }
+.chip input { position: absolute; opacity: 0; }
+.chip span { display: inline-block; padding: 6px 14px; border: 1px solid var(--line); border-radius: 999px; background: var(--card); font-size: 0.85rem; color: var(--ink-soft); cursor: pointer; }
+.chip input:checked + span { background: var(--accent); border-color: var(--accent); color: #fff; }
