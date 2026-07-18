@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kinfolio for Labs — Give patients a lab report they actually understand</title>
+<meta name="description" content="Turn your lab's result PDFs into branded, patient-friendly reports in Arabic and English — delivered by a WhatsApp link. Your logo, your lab. No integration, no IT project.">
+<link rel="stylesheet" href="style.css">
+<style>
+  /* ---- Kinfolio for Labs — B2B additions on top of the shared system ---- */
+  .b2b-badge { background: #123; color: #fff; }
+  .hero .biz-sub { max-width: 58ch; }
+  .arline { display:block; margin-top:14px; font-size:1.15rem; color:var(--accent-deep); direction:rtl; font-weight:600; }
+  .dual { display:grid; grid-template-columns:1fr 1fr; gap:28px; align-items:start; }
+  .dual .ar { direction:rtl; text-align:right; }
+  @media (max-width:720px){ .dual{ grid-template-columns:1fr; } .dual .ar{ text-align:right; } }
+
+  .band { padding:52px 0; border-top:1px solid var(--line); }
+  .band h2 { font-family:ui-serif,Georgia,serif; font-size:clamp(1.5rem,3.4vw,2.1rem); letter-spacing:-0.02em; margin-bottom:8px; }
+  .band .lede { color:var(--ink-soft); max-width:60ch; margin-bottom:26px; }
+
+  .steps { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+  @media (max-width:720px){ .steps{ grid-template-columns:1fr; } }
+  .step { background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:22px; box-shadow:var(--shadow); }
+  .step .n { width:34px; height:34px; border-radius:50%; background:var(--accent); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:800; margin-bottom:12px; }
+  .step h3 { font-size:1.05rem; margin-bottom:6px; }
+  .step p { font-size:0.92rem; color:var(--ink-soft); }
+  .step .ar { direction:rtl; margin-top:8px; font-size:0.92rem; color:var(--accent-deep); }
+
+  .pricing { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+  @media (max-width:760px){ .pricing{ grid-template-columns:1fr; } }
+  .tier { background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:26px 24px; box-shadow:var(--shadow); position:relative; }
+  .tier.feature { border-color:var(--accent); box-shadow:var(--shadow-lift); }
+  .tier .ribbon { position:absolute; top:-11px; right:20px; background:var(--accent); color:#fff; font-size:0.7rem; font-weight:700; padding:4px 12px; border-radius:999px; }
+  .tier .name { font-weight:700; font-size:1.1rem; }
+  .tier .price { font-size:2.2rem; font-weight:800; letter-spacing:-0.02em; margin:6px 0 2px; }
+  .tier .price span { font-size:0.95rem; font-weight:600; color:var(--ink-soft); }
+  .tier .per { font-size:0.85rem; color:var(--ink-soft); margin-bottom:14px; }
+  .tier ul { list-style:none; }
+  .tier li { font-size:0.9rem; padding:6px 0 6px 24px; position:relative; color:var(--ink); }
+  .tier li::before { content:"✓"; position:absolute; left:0; color:var(--accent); font-weight:800; }
+  .price-note { text-align:center; color:var(--ink-soft); font-size:0.9rem; margin-top:18px; }
+
+  .samples { display:flex; gap:16px; flex-wrap:wrap; }
+  .sample-card { flex:1 1 280px; background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:20px; box-shadow:var(--shadow); text-decoration:none; color:var(--ink); display:block; transition:box-shadow .15s,transform .15s; }
+  .sample-card:hover { box-shadow:var(--shadow-lift); transform:translateY(-2px); }
+  .sample-card .tag { font-size:0.72rem; font-weight:700; color:var(--accent-deep); background:var(--accent-soft); padding:3px 10px; border-radius:999px; display:inline-block; margin-bottom:10px; }
+  .sample-card h3 { font-size:1.02rem; margin-bottom:4px; }
+  .sample-card p { font-size:0.88rem; color:var(--ink-soft); }
+  .sample-card .open { margin-top:12px; font-weight:700; color:var(--accent-deep); font-size:0.9rem; }
+
+  .cta-final { text-align:center; }
+  .wa-btn { display:inline-flex; align-items:center; gap:10px; background:#25D366; color:#062e16; font-weight:800; font-size:1.05rem; padding:15px 28px; border-radius:999px; text-decoration:none; box-shadow:var(--shadow); }
+  .wa-btn:hover { box-shadow:var(--shadow-lift); }
+  .or { color:var(--ink-soft); margin:18px 0 8px; font-size:0.9rem; }
+  .compliance { font-size:0.82rem; color:var(--ink-soft); max-width:70ch; margin:26px auto 0; text-align:center; border-top:1px dashed var(--line); padding-top:18px; }
+  .site-foot { padding:32px 0; border-top:1px solid var(--line); margin-top:20px; }
+  .site-foot .wrap { display:flex; justify-content:space-between; align-items:center; gap:12px; font-size:0.85rem; color:var(--ink-soft); flex-wrap:wrap; }
+  .site-foot a { color:var(--accent-deep); }
+</style>
+</head>
+<body data-variant="labs">
+<header class="site"><div class="wrap">
+  <a class="logo" href="index.html">kin<span>folio</span></a>
+  <span class="nav-note b2b-badge">for Labs · للمختبرات</span>
+</div></header>
+
+<section class="hero"><div class="wrap">
+  <h1>Your patients get a page of numbers. Give them a report they <em>actually understand</em>.</h1>
+  <p class="sub biz-sub">Kinfolio turns your lab's result PDF into a branded, patient-friendly report — in Arabic and English — delivered by a simple WhatsApp link. Your logo. Your lab's name. No software to install, no integration with your machines.</p>
+  <span class="arline">تقرير مختبرك، بلغة يفهمها مريضك — بالعربية والإنجليزية، باسم مختبرك وشعاره.</span>
+  <div class="cta-box" style="margin-top:30px">
+    <a class="wa-btn" id="wa-cta" href="#contact">💬 Get a free branded sample · احصل على نموذج مجاني</a>
+    <p class="cta-note" style="margin-top:14px">Founding labs get launch pricing locked for life. See two real sample reports below ↓</p>
+  </div>
+</div></section>
+
+<section class="band"><div class="wrap">
+  <h2>The problem every lab already has</h2>
+  <div class="dual">
+    <div class="en">
+      <p class="lede">Patients can't read a lab report. So they call your front desk to ask "is this bad?", or they paste it into ChatGPT and get an answer you didn't write and can't stand behind. Either way, the report leaves your lab and the relationship with it.</p>
+    </div>
+    <div class="ar">
+      <p class="lede">مريضك لا يفهم أرقام التحاليل. فيتصل بمختبرك ليسأل "هل هذه النتيجة سيئة؟"، أو ينسخها في ChatGPT فيحصل على جواب لم تكتبه أنت ولا تضمنه. في الحالتين، يغادر التقرير مختبرك — وتغادر معه علاقتك بالمريض.</p>
+    </div>
+  </div>
+</div></section>
+
+<section class="band" style="background:var(--accent-soft)"><div class="wrap">
+  <h2>How it works — three steps, zero integration</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="n">1</div>
+      <h3>Send us the result PDF</h3>
+      <p>The same PDF your machines already produce — email it, or forward it, or drop it in a shared folder. Any lab, any format, Arabic / English / French.</p>
+      <div class="ar">أرسل ملف النتيجة PDF كما يخرج من أجهزتك — لا حاجة لأي ربط تقني.</div>
+    </div>
+    <div class="step">
+      <div class="n">2</div>
+      <h3>We generate the branded report</h3>
+      <p>Our AI reads every marker, keeps your lab's own printed ranges and flags, and writes a plain-language bilingual summary — under your logo, in ~60 seconds.</p>
+      <div class="ar">يقرأ نظامنا كل فحص ويكتب ملخصاً واضحاً بالعربية والإنجليزية، باسم مختبرك وشعاره.</div>
+    </div>
+    <div class="step">
+      <div class="n">3</div>
+      <h3>Patient gets a WhatsApp link</h3>
+      <p>They open a clean report they understand — the way they already receive results. They keep it, trend it over time, and come back to you.</p>
+      <div class="ar">يصل مريضك رابطاً عبر واتساب — تقرير واضح يحتفظ به ويتابع نتائجه معك.</div>
+    </div>
+  </div>
+</div></section>
+
+<section class="band"><div class="wrap">
+  <h2>See two real reports</h2>
+  <p class="lede">Both generated from real, anonymized lab results. This is exactly what your patients would receive — with your branding instead of the demo name.</p>
+  <div class="samples">
+    <a class="sample-card" href="samples/sample-report-en.pdf" target="_blank" rel="noopener">
+      <span class="tag">English-source · 45 markers</span>
+      <h3>Full chemistry + CBC report</h3>
+      <p>Chemistry, lipids, thyroid, HbA1c and a full blood count — with trends vs. previous results and a plain-language summary.</p>
+      <div class="open">Open sample PDF →</div>
+    </a>
+    <a class="sample-card" href="samples/sample-report-fr.pdf" target="_blank" rel="noopener">
+      <span class="tag">French-source · بالعربية</span>
+      <h3>French report → Arabic &amp; English</h3>
+      <p>A French-language lab result, summarized for the patient in Arabic and English — the everyday reality of MENA lab work.</p>
+      <div class="open">Open sample PDF →</div>
+    </a>
+  </div>
+</div></section>
+
+<section class="band" style="background:var(--accent-soft)"><div class="wrap">
+  <h2>Simple, published pricing</h2>
+  <p class="lede">No demos required to see a price, no per-seat games. Pick a monthly plan by report volume; every plan includes your branding and bilingual output.</p>
+  <div class="pricing">
+    <div class="tier">
+      <div class="name">Clinic</div>
+      <div class="price">$99<span>/mo</span></div>
+      <div class="per">up to 150 reports / month</div>
+      <ul>
+        <li>Your logo &amp; lab name on every report</li>
+        <li>Arabic + English output</li>
+        <li>WhatsApp-ready share links</li>
+        <li>Email support</li>
+      </ul>
+    </div>
+    <div class="tier feature">
+      <div class="ribbon">Most popular</div>
+      <div class="name">Lab</div>
+      <div class="price">$199<span>/mo</span></div>
+      <div class="per">up to 500 reports / month</div>
+      <ul>
+        <li>Everything in Clinic</li>
+        <li>Patient trends across visits</li>
+        <li>Your colors + custom domain link</li>
+        <li>Priority support</li>
+      </ul>
+    </div>
+    <div class="tier">
+      <div class="name">Network</div>
+      <div class="price">$299<span>/mo</span></div>
+      <div class="per">up to 1,500 reports / month</div>
+      <ul>
+        <li>Everything in Lab</li>
+        <li>Multiple branches / brands</li>
+        <li>Bulk send + monthly digest</li>
+        <li>Onboarding call included</li>
+      </ul>
+    </div>
+  </div>
+  <p class="price-note">Higher volume? Reports beyond your plan are billed per report. Ask us for a Network+ quote.</p>
+</div></section>
+
+<section class="band cta-final" id="contact"><div class="wrap">
+  <h2>Put your lab's name on a report patients love</h2>
+  <p class="lede" style="margin:0 auto 24px">Start with a free branded sample made from one of your own result PDFs — see it before you decide.</p>
+  <!-- TODO(founder): restore WhatsApp CTA once a real business number is live. Replace 9613000000 below and un-comment.
+  <a class="wa-btn" href="https://wa.me/9613000000?text=I'd%20like%20a%20free%20branded%20sample%20report%20for%20my%20lab" target="_blank" rel="noopener">💬 Message us on WhatsApp</a>
+  <p class="or">or leave your email and we'll reach out</p>
+  -->
+  <p class="or">Leave your work email and we'll send a branded sample within one business day.</p>
+  <div class="cta-box" style="max-width:440px;margin:0 auto">
+    <form class="cta-form" novalidate>
+      <input type="email" required placeholder="Your work email">
+      <button type="submit">Request a free sample</button>
+    </form>
+    <div class="cta-done">Got it — we'll send a branded sample within one business day. شكراً لك.</div>
+  </div>
+  <p class="compliance">Kinfolio for Labs is a reporting tool for licensed laboratories and clinics. Reports present each result with the ranges and flags printed on your lab's own report and include a clear notice that they are informational, not a diagnosis, and not a substitute for a physician. The issuing lab remains responsible for the clinical results it releases.</p>
+</div></section>
+
+<footer class="site-foot"><div class="wrap">
+  <span>© Kinfolio · <a href="index.html">Kinfolio for families</a></span>
+  <span>kinfolio.health</span>
+</div></footer>
+
+<script src="app.js"></script>
+</body>
+</html>
