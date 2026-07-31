@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kinfolio for Clinics — 38-second demo</title>
+<meta name="description" content="See what your chronic patients hold in their hand: every lab in one place, explained in Arabic, always pointing back to you. A free 1-month pilot.">
+<meta property="og:title" content="Kinfolio for Clinics — 38-second demo">
+<meta property="og:description" content="Every lab in one place, explained in the patient's language, always pointing back to you.">
+<meta property="og:type" content="video.other">
+<meta property="og:image" content="https://kinfolio.health/demo/poster.jpg">
+<link rel="stylesheet" href="../style.css">
+<style>
+  .demo-hero { padding: 40px 0 8px; text-align: center; }
+  .demo-hero .eyebrow {
+    display: inline-block; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.02em;
+    color: var(--accent-deep); background: var(--accent-soft); border: 1px solid #cde5e0;
+    padding: 6px 14px; border-radius: 999px; margin-bottom: 18px;
+  }
+  .demo-hero h1 {
+    font-family: ui-serif, Georgia, "Times New Roman", serif;
+    font-size: clamp(1.9rem, 4.6vw, 2.9rem); line-height: 1.14; letter-spacing: -0.02em;
+    font-weight: 700; max-width: 20ch; margin: 0 auto;
+  }
+  .demo-hero h1 em { color: var(--accent); font-style: italic; }
+  .demo-hero .sub { margin: 18px auto 0; max-width: 46ch; color: var(--ink-soft); font-size: 1.08rem; }
+
+  /* phone-framed vertical video */
+  .player { max-width: 360px; margin: 30px auto 0; }
+  .phone {
+    background: #0a1210; border-radius: 30px; padding: 10px;
+    box-shadow: var(--shadow-lift); border: 1px solid #12211d;
+  }
+  .phone video {
+    display: block; width: 100%; height: auto; border-radius: 22px; background: #0c1715;
+    aspect-ratio: 9 / 16;
+  }
+  .player .cap { margin-top: 12px; font-size: 0.82rem; color: var(--ink-soft); text-align: center; }
+
+  /* what you're seeing */
+  .beats { max-width: 560px; margin: 34px auto 0; display: grid; gap: 10px; }
+  .beat {
+    display: flex; gap: 12px; align-items: flex-start;
+    background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 14px 18px; box-shadow: var(--shadow); text-align: left;
+  }
+  .beat b { color: var(--ink); font-weight: 650; }
+  .beat span { color: var(--ink-soft); font-size: 0.94rem; }
+  .beat .tick { color: var(--accent); font-weight: 800; flex: none; }
+
+  .demo-cta { padding: 40px 0 8px; text-align: center; }
+  .demo-cta h2 {
+    font-family: ui-serif, Georgia, "Times New Roman", serif;
+    font-size: 1.55rem; letter-spacing: -0.01em; font-weight: 700; margin-bottom: 8px;
+  }
+  .demo-cta p { color: var(--ink-soft); margin-bottom: 20px; }
+  .cta {
+    display: inline-block; padding: 15px 30px; font-size: 1.02rem; font-weight: 700;
+    border-radius: var(--radius); color: #fff; text-decoration: none;
+    background: linear-gradient(180deg, #11907e 0%, var(--accent-deep) 100%);
+    box-shadow: 0 2px 4px rgba(10, 92, 80, 0.25), 0 10px 24px -10px rgba(10, 92, 80, 0.55);
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+  }
+  .cta:hover { transform: translateY(-1px); box-shadow: 0 4px 8px rgba(10, 92, 80, 0.28), 0 14px 30px -10px rgba(10, 92, 80, 0.6); }
+</style>
+</head>
+<body data-variant="demo">
+<header class="site"><div class="wrap">
+  <a class="logo" href="../labs.html">kin<span>folio</span> <span style="color:var(--ink-soft);font-weight:600;font-size:0.9rem;">for clinics</span></a>
+  <span class="nav-note">Free 1-month pilot</span>
+</div></header>
+
+<section class="demo-hero"><div class="wrap">
+  <span class="eyebrow">38-second demo</span>
+  <h1>What your chronic patients <em>hold in their hand</em>.</h1>
+  <p class="sub">After every visit, the patient leaves with a result they don't understand. This is what they'd have instead — and it always points back to you.</p>
+
+  <div class="player">
+    <div class="phone">
+      <video controls playsinline preload="metadata" poster="poster.jpg">
+        <source src="kinfolio-clinic-demo.mp4" type="video/mp4">
+        Your browser can't play embedded video —
+        <a href="kinfolio-clinic-demo.mp4">download the demo (MP4)</a>.
+      </video>
+    </div>
+    <p class="cap">Sound on · 38 seconds · works on any phone</p>
+  </div>
+
+  <div class="beats">
+    <div class="beat"><span class="tick">✓</span><span><b>Every result, one place.</b> Labs from any clinic, any language, organized into a clean timeline — no more paper folders.</span></div>
+    <div class="beat"><span class="tick">✓</span><span><b>Explained in Arabic.</b> Each lab put in plain words, grounded in the patient's own record — never an invented value.</span></div>
+    <div class="beat"><span class="tick">✓</span><span><b>Always back to you.</b> Every explanation ends by pointing the patient to their doctor — a reason to stay with your clinic.</span></div>
+  </div>
+</div></section>
+
+<section class="demo-cta"><div class="wrap">
+  <h2>Run it free for a month with your patients.</h2>
+  <p>No setup cost. We'll onboard your first patients for you.</p>
+  <a class="cta" href="mailto:hello@kinfolio.health?subject=Kinfolio%20clinic%20pilot">Start a pilot →</a>
+</div></section>
+
+<footer class="site"><div class="wrap">
+  <p>Kinfolio is a personal health record organizer. It does not provide medical advice, diagnosis, or treatment, and is not a substitute for professional medical advice. Always consult a qualified healthcare professional about your health.</p>
+  <p><a href="../labs.html">Kinfolio for Clinics</a> · <a href="https://tonic.karamarc.com/privacy">Privacy</a> · <a href="https://tonic.karamarc.com/terms">Terms</a> · © 2026 Kinfolio</p>
+</div></footer>
+</body>
+</html>
