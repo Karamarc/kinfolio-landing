@@ -36,12 +36,30 @@
         body: JSON.stringify({ email: email, variant: variant, who: (form.querySelector('input[name="kf-who"]:checked') || {}).value || "" })
       })
         .then(function (r) { if (!r.ok) throw new Error("bad status"); })
-        .catch(function () { /* accept optimistically; endpoint logs are source of truth */ })
-        .finally(function () {
+        .then(function () {
+          // Only claim success when the signup actually landed. This used to
+          // be a .finally(), so a rejected CORS preflight (kinfolio.health was
+          // missing from the API's allowed origins) hid the form and told the
+          // visitor they had joined while nothing was recorded.
           form.style.display = "none";
           var done = form.parentElement.querySelector(".cta-done");
           if (done) done.style.display = "block";
           try { localStorage.setItem("kf_waitlist", "1"); } catch (e) {}
+        })
+        .catch(function () {
+          btn.disabled = false;
+          btn.textContent = "Try again";
+          var err = form.parentElement.querySelector(".cta-error");
+          if (err) {
+            err.style.display = "block";
+          } else {
+            err = document.createElement("p");
+            err.className = "cta-error";
+            err.setAttribute("role", "alert");
+            err.textContent =
+              "Sorry — that didn't go through. Please try again, or email hello@kinfolio.health.";
+            form.parentElement.appendChild(err);
+          }
         });
     });
   });
