@@ -111,24 +111,21 @@
   </div>
 </div></section>
 
-<section class="band"><div class="wrap">
-  <h2>See two real reports</h2>
-  <p class="lede">Both generated from real, anonymized lab results. This is exactly what your patients would receive — with your branding instead of the demo name.</p>
-  <div class="samples">
-    <a class="sample-card" href="samples/sample-report-en.pdf" target="_blank" rel="noopener">
-      <span class="tag">English-source · 45 markers</span>
-      <h3>Full chemistry + CBC report</h3>
-      <p>Chemistry, lipids, thyroid, HbA1c and a full blood count — with trends vs. previous results and a plain-language summary.</p>
-      <div class="open">Open sample PDF →</div>
-    </a>
-    <a class="sample-card" href="samples/sample-report-fr.pdf" target="_blank" rel="noopener">
-      <span class="tag">French-source · بالعربية</span>
-      <h3>French report → Arabic &amp; English</h3>
-      <p>A French-language lab result, summarized for the patient in Arabic and English — the everyday reality of MENA lab work.</p>
-      <div class="open">Open sample PDF →</div>
-    </a>
-  </div>
-</div></section>
+<!-- SAMPLE REPORTS PULLED 2026-08-05 — DO NOT RESTORE UNTIL REGENERATED.
+     Both published PDFs stated a marker count that contradicted the rows they
+     displayed: the EN sample said "Of the 45 tests in this report" over 50
+     displayed rows, the FR said "Of 24 tests" over 25. For a product whose
+     entire claim is that it never invents facts, shipping two sales artifacts
+     that misstate their own contents is the worst possible demonstration.
+
+     The FR one also slipped the generator's own false-count check, which
+     anchors on "all|the <n>" and so misses "Of 24 tests" — and is
+     English-only, so Arabic intros are unchecked entirely.
+
+     Restore only after: (1) the compliance gate fix lands, (2) the samples are
+     regenerated from source, (3) the rendered count is verified against the
+     actual row count in both languages. The PDFs remain in samples/ but are no
+     longer linked. -->
 
 <section class="band" style="background:var(--accent-soft)"><div class="wrap">
   <h2>Simple, published pricing</h2>
@@ -192,6 +189,7 @@
 
 <footer class="site-foot"><div class="wrap">
   <span>© Kinfolio · <a href="index.html">Kinfolio for families</a></span>
+  <span><a href="https://tonic.karamarc.com/privacy">Privacy</a> · <a href="https://tonic.karamarc.com/terms">Terms</a></span>
   <span>kinfolio.health</span>
 </div></footer>
 
