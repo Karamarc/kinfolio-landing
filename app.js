@@ -1,7 +1,7 @@
 /* Kinfolio landing — waitlist capture + pageview beacon.
    Owned endpoints only; no third-party SDKs (marketing pages carry no health data). */
 (function () {
-  var API = "https://tonic.karamarc.com/api/public";
+  var API = "https://kinfolio.health/api/public";
   var variant = document.body.dataset.variant || "unknown";
 
   // Pageview beacon (fire-and-forget; silent on failure).

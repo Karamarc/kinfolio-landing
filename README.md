@@ -12,8 +12,8 @@ Ads and community posts should link DIRECTLY to a variant page with `?utm_source
 
 ## Measurement (owned, no SDKs — FTC HBNR-safe)
 `app.js` fires:
-- `POST https://tonic.karamarc.com/api/public/beacon` `{variant, ref, src, cmp}` on pageview
-- `POST https://tonic.karamarc.com/api/public/waitlist` `{email, variant}` on signup
+- `POST https://kinfolio.health/api/public/beacon` `{variant, ref, src, cmp}` on pageview
+- `POST https://kinfolio.health/api/public/waitlist` `{email, variant}` on signup
 
 Both endpoints live in the Tonic backend (rate-limited, no auth, CORS-allowed for the
 landing origin). **Capture rate = waitlist / beacons per variant.** Decision rule from the
