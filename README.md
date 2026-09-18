@@ -20,9 +20,16 @@ landing origin). **Capture rate = waitlist / beacons per variant.** Decision rul
 plan: best variant becomes THE positioning; all three <1% capture → stop and rethink.
 
 ## Deploy
-Any static host. Simplest: Railway static service or GitHub Pages.
-When kinfolio.health is purchased, attach it and update ad links.
-TODO when domain live: move Privacy/Terms links from tonic.karamarc.com to the kinfolio domain.
+GitHub Pages from `Karamarc/kinfolio-landing`; the `CNAME` file sets the served
+domain. The landing lives at **www.kinfolio.health** — the apex `kinfolio.health`
+belongs to the Tonic app, so `CNAME` must stay `www.kinfolio.health`. Setting it
+back to the apex would take the app's domain away from Railway.
+
+`kinfolio.health/demo` is printed on the clinic sell-sheets, so the app 301s that
+one path to `https://www.kinfolio.health/demo`. Verify with
+`curl -sI https://kinfolio.health/demo | head -3`.
+
+Privacy/Terms are real pages in the app and are linked there on purpose.
 
 ## Compliance notes
 Copy follows the FDA-wellness wording playbook (organizer/track/understand; no disease
