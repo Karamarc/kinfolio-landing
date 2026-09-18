@@ -1,37 +1,36 @@
-# Kinfolio validation landing site
+# www.kinfolio.health — redirect only
 
-Static site for the 3-framing demand validation (week 1 of the monetization plan).
+This repository no longer holds the marketing site. It serves **one job**:
+forward `www.kinfolio.health` to the real site.
 
-## Pages / variants
-- `index.html` — neutral hub (variant `index`), links to the three framings
-- `parents.html` — caregivers of aging parents (variant `parents`)
-- `chronic.html` — chronic-illness / own-history trending (variant `chronic`)
-- `global.html` — expats / cross-border / MENA bilingual records (variant `global`)
+## Where the landing lives now
 
-Ads and community posts should link DIRECTLY to a variant page with `?utm_source=...&utm_campaign=...`.
+`Medical-Journal` → `tonic-ui/public/landing/`, served by the app at
+**https://kinfolio.health/landing/**, with **https://kinfolio.health/demo**
+kept as a short alias because that URL is printed on the clinic sell-sheets.
 
-## Measurement (owned, no SDKs — FTC HBNR-safe)
-`app.js` fires:
-- `POST https://kinfolio.health/api/public/beacon` `{variant, ref, src, cmp}` on pageview
-- `POST https://kinfolio.health/api/public/waitlist` `{email, variant}` on signup
+Edit the landing there and deploy the app; there is no separate deploy.
 
-Both endpoints live in the Tonic backend (rate-limited, no auth, CORS-allowed for the
-landing origin). **Capture rate = waitlist / beacons per variant.** Decision rule from the
-plan: best variant becomes THE positioning; all three <1% capture → stop and rethink.
+## Why it moved
 
-## Deploy
-GitHub Pages from `Karamarc/kinfolio-landing`; the `CNAME` file sets the served
-domain. The landing lives at **www.kinfolio.health** — the apex `kinfolio.health`
-belongs to the Tonic app, so `CNAME` must stay `www.kinfolio.health`. Setting it
-back to the apex would take the app's domain away from Railway.
+The app took the `kinfolio.health` apex. That left two near-identical
+hostnames serving two different sites — `www.kinfolio.health` (campaign) and
+`kinfolio.health` (product) — which visitors could not tell apart. One origin
+removes the ambiguity, and the landing gets HTTPS, the same deploy pipeline
+and the same uptime as the app.
 
-`kinfolio.health/demo` is printed on the clinic sell-sheets, so the app 301s that
-one path to `https://www.kinfolio.health/demo`. Verify with
-`curl -sI https://kinfolio.health/demo | head -3`.
+## How the redirect works
 
-Privacy/Terms are real pages in the app and are linked there on purpose.
+GitHub Pages cannot issue a 301, so `redirect.js` does it client-side.
+`404.html` loads the same script, and Pages serves `404.html` for every path
+that no longer exists here — which is what makes the redirect path-preserving:
+`/labs.html` still lands on `/landing/labs.html`.
 
-## Compliance notes
-Copy follows the FDA-wellness wording playbook (organizer/track/understand; no disease
-claims, no "abnormal", no treatment guidance) and carries the 3-element disclaimer in the
-footer. Do not add health-outcome claims to headlines when iterating on conversion.
+`CNAME` must stay `www.kinfolio.health`. Pointing it back at the apex would
+take the domain away from Railway and break the app.
+
+## Verifying
+
+    python -m app.scripts.domain_invariants    # from Medical-Journal/backend
+
+checks this redirect along with every other live domain invariant.
